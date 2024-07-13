@@ -1,50 +1,54 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:presensi_app/screen/dashboard_screen.dart';
 
-class screenlogin extends StatelessWidget {
-  const screenlogin({Key? key}) : super(key: key);
-
+class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SingleChildScrollView(
+        backgroundColor: Colors.white,
+        body: SafeArea(
+            child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: Column(
             children: [
-              const SizedBox(height: 80),
+              const SizedBox(
+                height: 80,
+              ),
               Center(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    // Logo aplikasi
+                    //Logo aplikasi
                     Image.asset(
-                      'assets/images/logo.png',
+                      'assets/images/logo_polbeng.png',
                       height: 128,
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(
+                      height: 10,
+                    ),
                     RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
-                        text: 'Selamat Datang\ndi ',
-                        style: GoogleFonts.manrope(
-                          fontSize: 32,
-                          color: const Color(0xFF101317),
-                          fontWeight: FontWeight.w800,
-                        ),
-                        children: const [
-                          TextSpan(
-                            text: 'PresensiApp',
-                            style: TextStyle(
-                                color: Color(0xFF12A3DA),
-                                fontWeight: FontWeight.w800),
-                          )
-                        ],
-                      ),
+                          text: 'Selamat Datang\ndi ',
+                          style: GoogleFonts.manrope(
+                            fontSize: 32,
+                            color: const Color(0xFF101317),
+                            fontWeight: FontWeight.w800,
+                          ),
+                          children: const [
+                            TextSpan(
+                                text: 'PresensiApp',
+                                style: TextStyle(
+                                    color: Color(0xFF12A3DA),
+                                    fontWeight: FontWeight.w800))
+                          ]),
                     ),
-                    const SizedBox(height: 5),
+                    const SizedBox(
+                      height: 5,
+                    ),
                     Text(
                       'Halo, silahkan masuk untuk melanjutkan',
                       style: GoogleFonts.manrope(
@@ -52,7 +56,9 @@ class screenlogin extends StatelessWidget {
                         color: const Color(0xFFACAFB5),
                       ),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     const TextField(
                       decoration: InputDecoration(
                         labelText: 'Username',
@@ -85,7 +91,7 @@ class screenlogin extends StatelessWidget {
                       obscureText: true,
                     ),
                     const SizedBox(height: 8),
-                    // Forgot password
+                    //forgot password
                     GestureDetector(
                       onTap: () {
                         if (kDebugMode) {
@@ -107,18 +113,21 @@ class screenlogin extends StatelessWidget {
                     // Login Button
                     ElevatedButton(
                       onPressed: () {
-                        // Tambahkan logika autentikasi di sini
-                        // Misalnya, navigasi ke halaman dashboard setelah berhasil login
-                        Navigator.pushReplacementNamed(context, '/dashboard');
+                        // Login Tap
+                        Navigator.of(context).pushAndRemoveUntil(
+                            MaterialPageRoute(
+                              builder: (context) => const DashboardScreen(),
+                            ),
+                            (route) => false);
                       },
                       style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(double.infinity, 50), // width and height
-                        backgroundColor: const Color(0xFF12A3DA),
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                          minimumSize: const Size(
+                              double.infinity, 50), // width and height
+                          backgroundColor: const Color(0xFF12A3DA),
+                          foregroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          )),
                       child: Text(
                         'Masuk',
                         style: GoogleFonts.manrope(
@@ -138,9 +147,9 @@ class screenlogin extends StatelessWidget {
                       onPressed: () {
                         // Fingerprint Tap
                       },
-                      child: Row(
+                      child: const Row(
                         mainAxisSize: MainAxisSize.min,
-                        children: const [
+                        children: [
                           Icon(Icons.fingerprint, size: 48, color: Colors.grey),
                         ],
                       ),
@@ -175,8 +184,6 @@ class screenlogin extends StatelessWidget {
               )
             ],
           ),
-        ),
-      ),
-    );
+        )));
   }
 }

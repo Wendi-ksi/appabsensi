@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:presensi_app/screen/attandance_recap_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -88,7 +89,13 @@ class DashboardScreen extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const AttandanceRecapScreen(),
+                      ),
+                    );
+                  },
                   child: Text(
                     'Rekap Absensi',
                     style: GoogleFonts.manrope(
@@ -145,7 +152,6 @@ class DashboardScreen extends StatelessWidget {
                               )
                             ],
                           ),
-                          SizedBox(height: 10),
                           const SizedBox(height: 10),
                           Text(
                             '07:00',
@@ -167,16 +173,12 @@ class DashboardScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                SizedBox(
-                  width: 10,
-                ),
                 const SizedBox(
                   width: 10,
                 ),
                 Expanded(
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      // Gray border for the Card
                       side: const BorderSide(
                           color: Color.fromARGB(255, 219, 226, 228),
                           width: 1.0), // Gray border for the Card
@@ -243,7 +245,6 @@ class DashboardScreen extends StatelessWidget {
               height: 10,
             ),
             ElevatedButton(
-              onPressed: () {},
               onPressed: () {
                 showModalBottomSheet(
                   context: context,
