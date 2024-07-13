@@ -1,14 +1,9 @@
-// ignore_for_file: depend_on_referenced_packages
-
-import 'package:appabsensi/screen/riwayat_absen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class Dasboard extends StatelessWidget {
-  const Dasboard({super.key});
-
+class DashboardScreen extends StatelessWidget {
+  const DashboardScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,12 +88,7 @@ class Dasboard extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Riwayat()),
-                    );
-                  },
+                  onTap: () {},
                   child: Text(
                     'Rekap Absensi',
                     style: GoogleFonts.manrope(
@@ -125,8 +115,7 @@ class Dasboard extends StatelessWidget {
                     ),
                     color: Colors.white,
                     child: Padding(
-                      // ignore: prefer_const_constructors
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -135,9 +124,10 @@ class Dasboard extends StatelessWidget {
                               Container(
                                 width: 48,
                                 height: 48,
-                                padding: EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                    color: Color.fromARGB(35, 48, 134, 254),
+                                    color:
+                                        const Color.fromARGB(35, 48, 134, 254),
                                     borderRadius: BorderRadius.circular(10)),
                                 child: SvgPicture.asset(
                                     'assets/svgs/login_outlined.svg'),
@@ -156,6 +146,7 @@ class Dasboard extends StatelessWidget {
                             ],
                           ),
                           SizedBox(height: 10),
+                          const SizedBox(height: 10),
                           Text(
                             '07:00',
                             style: GoogleFonts.lexend(
@@ -179,10 +170,14 @@ class Dasboard extends StatelessWidget {
                 SizedBox(
                   width: 10,
                 ),
+                const SizedBox(
+                  width: 10,
+                ),
                 Expanded(
                   child: Card(
                     shape: RoundedRectangleBorder(
-                      side: BorderSide(
+                      // Gray border for the Card
+                      side: const BorderSide(
                           color: Color.fromARGB(255, 219, 226, 228),
                           width: 1.0), // Gray border for the Card
                       borderRadius:
@@ -190,7 +185,7 @@ class Dasboard extends StatelessWidget {
                     ),
                     color: Colors.white, // White background color for the Card
                     child: Padding(
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -199,9 +194,10 @@ class Dasboard extends StatelessWidget {
                               Container(
                                 width: 48,
                                 height: 48,
-                                padding: EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(10),
                                 decoration: BoxDecoration(
-                                    color: Color.fromARGB(35, 48, 134, 254),
+                                    color:
+                                        const Color.fromARGB(35, 48, 134, 254),
                                     borderRadius: BorderRadius.circular(10)),
                                 child: SvgPicture.asset(
                                   'assets/svgs/logout_outlined.svg',
@@ -247,177 +243,13 @@ class Dasboard extends StatelessWidget {
               height: 10,
             ),
             ElevatedButton(
+              onPressed: () {},
               onPressed: () {
-                // menampilkan dialog
-                showDialog(
+                showModalBottomSheet(
                   context: context,
-                  builder: (BuildContext context) {
-                    return AlertDialog(
-                      title: Text("Persensi Masuk"),
-                      titlePadding:
-                          EdgeInsets.only(left: 20, top: 20, right: 20),
-                      contentPadding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
-                      ),
-                      content: Container(
-                        width: MediaQuery.of(context).size.width,
-                        child: SingleChildScrollView(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(width: 20),
-                                  Image.asset(
-                                    'assets/images/calender.png',
-                                    width: 30,
-                                    height: 30,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Tanggal Masuk",
-                                        style: GoogleFonts.lexend(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: const Color(0xFF101317),
-                                        ),
-                                      ),
-                                      Text(
-                                        "Selasa, 23 Agustus 2023",
-                                        style: GoogleFonts.lexend(
-                                          fontSize: 14,
-                                          color: const Color(0xFF101317),
-                                        ),
-                                      )
-                                    ],
-                                  )
-                                ],
-                              ),
-                              SizedBox(height: 20),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(width: 20),
-                                  Image.asset(
-                                    'assets/images/jam.png',
-                                    width: 30,
-                                    height: 30,
-                                  ),
-                                  SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Jam Masuk",
-                                        style: GoogleFonts.lexend(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.bold,
-                                          color: const Color(0xFF101317),
-                                        ),
-                                      ),
-                                      Text(
-                                        "07:03:23",
-                                        style: GoogleFonts.lexend(
-                                          fontSize: 14,
-                                          color: const Color(0xFF101317),
-                                        ),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              SizedBox(height: 40),
-                              Text(
-                                "Foto selfie di area kampus",
-                                textAlign: TextAlign.left,
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Color.fromARGB(255, 105, 101, 101),
-                                ),
-                              ),
-                              SizedBox(height: 20),
-                              Center(
-                                child: FractionallySizedBox(
-                                  // Menggunakan FractionallySizedBox untuk mengatur lebar
-                                  widthFactor: 0.9, // Faktor lebar 90%
-                                  child: InkWell(
-                                    onTap: () {
-                                      // Tambahkan fungsionalitas yang diinginkan saat card ditekan di sini
-                                    },
-                                    child: Card(
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(10.0),
-                                        side: BorderSide(
-                                            color: Colors.grey, width: 1.0),
-                                      ),
-                                      child: Padding(
-                                        padding: const EdgeInsets.all(10.0),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.center,
-                                          children: [
-                                            Image.asset(
-                                              'assets/images/kamera.png',
-                                              width: 50,
-                                              height: 50,
-                                            ),
-                                            SizedBox(height: 10),
-                                            Text(
-                                              "ambil gambar",
-                                              style: TextStyle(
-                                                fontSize: 18,
-                                                color: Color.fromARGB(
-                                                    255, 105, 101, 101),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 10),
-                            ],
-                          ),
-                        ),
-                      ),
-                      actions: [
-                        Center(
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                // Add your button functionality here
-                              },
-                              style: ElevatedButton.styleFrom(
-                                minimumSize: const Size(double.infinity, 50),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(10.0),
-                                ),
-                                backgroundColor: Color(0xFF12A3DA),
-                              ),
-                              child: Text(
-                                'Hadir',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 252, 252, 252),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    );
+                  isScrollControlled: true,
+                  builder: (context) {
+                    return attandanceScreen();
                   },
                 );
               },
@@ -455,171 +287,123 @@ class Dasboard extends StatelessWidget {
               children: [
                 Expanded(
                   child: Card(
-                    clipBehavior: Clip
-                        .antiAlias, // This ensures the image is clipped to the card's shape
+                    clipBehavior: Clip.antiAlias,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                          10), // If you want rounded corners
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(
-                              'assets/images/bg_izin.png'), // Replace with your image asset
-                          fit: BoxFit
-                              .cover, // This will fill the container's bounds with the image
+                          image: AssetImage('assets/images/bg_izin.png'),
+                          fit: BoxFit.cover,
                         ),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Text(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
                               'Izin Absen',
-                              style: TextStyle(
-                                color: Colors.white,
+                              style: GoogleFonts.manrope(
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 22,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                              height: 10), // Spacer between text and button
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: Text(
-                              'isi form untuk mengajukan absen',
-                              style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 15,
                               ),
-                              overflow: TextOverflow
-                                  .visible, // Atur overflow ke visible agar teks melebihi batas tetap ditampilkan
-                              maxLines: 2, // Atur maksimal 2 baris untuk teks
                             ),
-                          ),
-
-                          SizedBox(
-                              height: 20), // Spacer between text and button
-                          Center(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  // Add your button functionality here
-                                },
-                                style: ElevatedButton.styleFrom(
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Isi form untuk mengajukan izin absensi',
+                              style: GoogleFonts.manrope(
+                                fontSize: 14,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 20),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  foregroundColor: const Color(0xff313638),
+                                  minimumSize: const Size(double.infinity, 50),
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        10.0), // Atur nilai border radius sesuai keinginan
-                                  ),
-                                  // Atur warna background button di sini jika diperlukan
-                                ),
-                                child: Text(
-                                  'Ajukan Izin',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors
-                                        .black, // Atur warna teks menjadi hitam
-                                  ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  )),
+                              child: Text(
+                                'Ajukan izin',
+                                style: GoogleFonts.manrope(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                          ),
-
-                          SizedBox(height: 10), // Spacer at the end
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ),
                 const SizedBox(
-                  height: 10,
+                  width: 10,
                 ),
                 Expanded(
                   child: Card(
-                    clipBehavior: Clip
-                        .antiAlias, // This ensures the image is clipped to the card's shape
+                    clipBehavior: Clip.antiAlias,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                          10), // If you want rounded corners
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     child: Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         image: DecorationImage(
-                          image: AssetImage(
-                              'assets/images/bg_cuti.png'), // Replace with your image asset
-                          fit: BoxFit
-                              .cover, // This will fill the container's bounds with the image
+                          image: AssetImage('assets/images/bg_cuti.png'),
+                          fit: BoxFit.cover,
                         ),
                       ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: Text(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
                               'Izin Cuti',
-                              style: TextStyle(
-                                color: Colors.white,
+                              style: GoogleFonts.manrope(
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 22,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                              height: 10), // Spacer between text and button
-                          Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: Text(
-                              'isi form untuk mengajukan cuti ya',
-                              style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 15,
                               ),
-                              overflow: TextOverflow
-                                  .visible, // Atur overflow ke visible agar teks melebihi batas tetap ditampilkan
-                              maxLines: 2, // Atur maksimal 2 baris untuk teks
                             ),
-                          ),
-
-                          SizedBox(
-                              height: 20), // Spacer between text and button
-                          Center(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 16.0),
-                              child: ElevatedButton(
-                                onPressed: () {
-                                  // Add your button functionality here
-                                },
-                                style: ElevatedButton.styleFrom(
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Text(
+                              'Isi form untuk mengajukan cuti',
+                              style: GoogleFonts.manrope(
+                                fontSize: 14,
+                                color: Colors.white,
+                              ),
+                            ),
+                            const SizedBox(height: 40),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                  backgroundColor: Colors.white,
+                                  foregroundColor: const Color(0xff9B59B6),
+                                  minimumSize: const Size(double.infinity, 50),
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(
-                                        10.0), // Atur nilai border radius sesuai keinginan
-                                  ),
-                                  // Atur warna background button di sini jika diperlukan
-                                ),
-                                child: Text(
-                                  'Ajukan Cuti',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 172, 63,
-                                        187), // Atur warna teks menjadi hitam
-                                  ),
+                                    borderRadius: BorderRadius.circular(10),
+                                  )),
+                              child: Text(
+                                'Ajukan Cuti',
+                                style: GoogleFonts.manrope(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.bold,
                                 ),
                               ),
                             ),
-                          ),
-
-                          SizedBox(height: 10), // Spacer at the end
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -630,5 +414,132 @@ class Dasboard extends StatelessWidget {
         ),
       )),
     );
+  }
+
+  Widget attandanceScreen() {
+    return Column(mainAxisSize: MainAxisSize.min, children: [
+      Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Presensi Masuk',
+                style: GoogleFonts.manrope(
+                  fontSize: 24,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                )),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                const Icon(
+                  Icons.calendar_month,
+                  color: Color(0xffE74C3C),
+                  size: 32,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Tanggal Masuk',
+                        style: GoogleFonts.manrope(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: const Color(0xff111111),
+                        )),
+                    Text('Selasa, 23 Agustus 2023',
+                        style: GoogleFonts.manrope(
+                          fontSize: 14,
+                          color: const Color(0xff707070),
+                        )),
+                  ],
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                const Icon(
+                  Icons.av_timer_outlined,
+                  color: Color(0xffE74C3C),
+                  size: 32,
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Jam Masuk',
+                        style: GoogleFonts.manrope(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                          color: const Color(0xff111111),
+                        )),
+                    Text('07:30:23',
+                        style: GoogleFonts.manrope(
+                          fontSize: 14,
+                          color: const Color(0xff707070),
+                        )),
+                  ],
+                )
+              ],
+            ),
+            const SizedBox(
+              height: 40,
+            ),
+            Text(
+              'Foto selfie di area kantor',
+              style: GoogleFonts.manrope(
+                fontSize: 16,
+                color: const Color(0xff707070),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Card(
+              child: Container(
+                height: 200, // Set your desired height
+                alignment: Alignment.center,
+                child: ElevatedButton.icon(
+                  icon: const Icon(Icons.camera_alt),
+                  label: const Text('Ambil Gambar'),
+                  onPressed: () {
+                    // Implement your image picking logic
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 16),
+            ElevatedButton(
+              onPressed: () {
+                // Implement your check-in logic
+              },
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(double.infinity, 50),
+                backgroundColor: Colors.blue,
+                foregroundColor: Colors.white,
+              ),
+              child: Text(
+                'Hadir',
+                style: GoogleFonts.manrope(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    ]);
   }
 }
